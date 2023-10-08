@@ -1,0 +1,7 @@
+Number of Processes / Cores	Sequential	SIMD (AVX2)	MPI	Pthread	OpenMP	CUDA	OpenACC
+1                          	641       	427        	643	719    	598   	27  	28     
+2                          	641       	427        	788	643    	594   	27  	28     
+4                          	641       	427        	504	343    	447   	27  	28     
+8                          	641       	427        	363	204    	297   	27  	28     
+16                         	641       	427        	278	100    	184   	27  	28     
+32                         	641       	427        	287	72     	137   	27  	28     

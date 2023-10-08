@@ -42,3 +42,10 @@
 
 *.Plo
 *.Plo.0.0.0
+
+# Large image
+*20K*.jpg
+
+# Files for reports
+*.xlsx
+*.png
