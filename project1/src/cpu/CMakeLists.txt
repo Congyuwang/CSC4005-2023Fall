@@ -16,6 +16,8 @@ if (OpenMP_CXX_FOUND)
     message("OPENMP FOUND, Version: " ${OpenMP_CXX_VERSION})
 endif ()
 
+set(CMAKE_INTERPROCEDURAL_OPTIMIZATION, ON)
+
 # Add Executables
 ## Sequential
 add_executable(sequential_PartA
