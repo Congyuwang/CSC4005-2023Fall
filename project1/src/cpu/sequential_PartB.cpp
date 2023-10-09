@@ -11,6 +11,11 @@
 
 #include "utils.hpp"
 
+const int FILTER_SIZE = 3;
+const double filter[FILTER_SIZE][FILTER_SIZE] = {{1.0 / 9, 1.0 / 9, 1.0 / 9},
+                                                 {1.0 / 9, 1.0 / 9, 1.0 / 9},
+                                                 {1.0 / 9, 1.0 / 9, 1.0 / 9}};
+
 int main(int argc, char** argv)
 {
     if (argc != 3) {
@@ -40,7 +45,8 @@ int main(int argc, char** argv)
             int top_base = ((height - 1) * input_jpeg.width + (width - 1)) * input_jpeg.num_channels;
             int mid_base = (height * input_jpeg.width + (width - 1)) * input_jpeg.num_channels;
             int bot_base = ((height + 1) * input_jpeg.width + (width - 1)) * input_jpeg.num_channels;
-            unsigned char cv_l_t_r = input_jpeg.buffer[top_base];
+
+            unsigned char cv_l_t_r = input_jpeg.buffer[top_base + 0];
             unsigned char cv_l_t_g = input_jpeg.buffer[top_base + 1];
             unsigned char cv_l_t_b = input_jpeg.buffer[top_base + 2];
             unsigned char cv_m_t_r = input_jpeg.buffer[top_base + 3];
@@ -49,7 +55,8 @@ int main(int argc, char** argv)
             unsigned char cv_r_t_r = input_jpeg.buffer[top_base + 6];
             unsigned char cv_r_t_g = input_jpeg.buffer[top_base + 7];
             unsigned char cv_r_t_b = input_jpeg.buffer[top_base + 8];
-            unsigned char cv_l_m_r = input_jpeg.buffer[mid_base];
+
+            unsigned char cv_l_m_r = input_jpeg.buffer[mid_base + 0];
             unsigned char cv_l_m_g = input_jpeg.buffer[mid_base + 1];
             unsigned char cv_l_m_b = input_jpeg.buffer[mid_base + 2];
             unsigned char cv_m_m_r = input_jpeg.buffer[mid_base + 3];
@@ -58,7 +65,8 @@ int main(int argc, char** argv)
             unsigned char cv_r_m_r = input_jpeg.buffer[mid_base + 6];
             unsigned char cv_r_m_g = input_jpeg.buffer[mid_base + 7];
             unsigned char cv_r_m_b = input_jpeg.buffer[mid_base + 8];
-            unsigned char cv_l_b_r = input_jpeg.buffer[bot_base];
+
+            unsigned char cv_l_b_r = input_jpeg.buffer[bot_base + 0];
             unsigned char cv_l_b_g = input_jpeg.buffer[bot_base + 1];
             unsigned char cv_l_b_b = input_jpeg.buffer[bot_base + 2];
             unsigned char cv_m_b_r = input_jpeg.buffer[bot_base + 3];
@@ -68,43 +76,30 @@ int main(int argc, char** argv)
             unsigned char cv_r_b_g = input_jpeg.buffer[bot_base + 7];
             unsigned char cv_r_b_b = input_jpeg.buffer[bot_base + 8];
 
-            unsigned int sum_r = 0;
-            unsigned int sum_g = 0;
-            unsigned int sum_b = 0;
-            sum_r += cv_l_t_r;
-            sum_g += cv_l_t_g;
-            sum_b += cv_l_t_b;
-            sum_r += cv_m_t_r;
-            sum_g += cv_m_t_g;
-            sum_b += cv_m_t_b;
-            sum_r += cv_r_t_r;
-            sum_g += cv_r_t_g;
-            sum_b += cv_r_t_b;
-            sum_r += cv_l_m_r;
-            sum_g += cv_l_m_g;
-            sum_b += cv_l_m_b;
-            sum_r += cv_m_m_r;
-            sum_g += cv_m_m_g;
-            sum_b += cv_m_m_b;
-            sum_r += cv_r_m_r;
-            sum_g += cv_r_m_g;
-            sum_b += cv_r_m_b;
-            sum_r += cv_l_b_r;
-            sum_g += cv_l_b_g;
-            sum_b += cv_l_b_b;
-            sum_r += cv_m_b_r;
-            sum_g += cv_m_b_g;
-            sum_b += cv_m_b_b;
-            sum_r += cv_r_b_r;
-            sum_g += cv_r_b_g;
-            sum_b += cv_r_b_b;
+            int sum_r = cv_l_t_r * filter[0][0] + cv_m_t_r * filter[0][1] +
+                        cv_r_t_r * filter[0][2] + cv_l_m_r * filter[1][0] +
+                        cv_m_m_r * filter[1][1] + cv_r_m_r * filter[1][2] +
+                        cv_l_b_r * filter[2][0] + cv_m_b_r * filter[2][1] +
+                        cv_r_b_r * filter[2][2];
+
+            int sum_g = cv_l_t_g * filter[0][0] + cv_m_t_g * filter[0][1] +
+                        cv_r_t_g * filter[0][2] + cv_l_m_g * filter[1][0] +
+                        cv_m_m_g * filter[1][1] + cv_r_m_g * filter[1][2] +
+                        cv_l_b_g * filter[2][0] + cv_m_b_g * filter[2][1] +
+                        cv_r_b_g * filter[2][2];
+
+            int sum_b = cv_l_t_b * filter[0][0] + cv_m_t_b * filter[0][1] +
+                        cv_r_t_b * filter[0][2] + cv_l_m_b * filter[1][0] +
+                        cv_m_m_b * filter[1][1] + cv_r_m_b * filter[1][2] +
+                        cv_l_b_b * filter[2][0] + cv_m_b_b * filter[2][1] +
+                        cv_r_b_b * filter[2][2];
 
             filteredImage[(height * input_jpeg.width + width) * input_jpeg.num_channels]
-                = static_cast<unsigned char>(std::round(sum_r / 9.0));
+                = static_cast<unsigned char>(sum_r);
             filteredImage[(height * input_jpeg.width + width) * input_jpeg.num_channels + 1]
-                = static_cast<unsigned char>(std::round(sum_g / 9.0));
+                = static_cast<unsigned char>(sum_g);
             filteredImage[(height * input_jpeg.width + width) * input_jpeg.num_channels + 2]
-                = static_cast<unsigned char>(std::round(sum_b / 9.0));
+                = static_cast<unsigned char>(sum_b);
         }
     }
     auto end_time = std::chrono::high_resolution_clock::now();
