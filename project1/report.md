@@ -102,3 +102,42 @@ The graph:
 
 - It is interesting that there is usually little improvement from 1 core
   to 2 cores. Is the overhead of multithreading that big? Why is this?
+
+### Tests
+
+The project does not come with test suite. Nor is test required for students.
+However, computing a lot of indices is error-prune (all those arithmetics!).
+
+I implemented a test in `./src/scripts/tests.py`, which compares output image
+with reference image:
+
+```python
+def comapre_img(test_img: str, ref_img: str, tol: int = TOL) -> bool:
+    """compare two images (range 0-255), with a given tol.
+
+    Args:
+        test_img: path to the image to be tested
+        ref_img: path to the reference image
+        tol: maximum tolerance
+
+    Returns:
+        whether two images are the same
+    """
+    test_img = load_img(test_img)
+    ref_img = load_img(ref_img)
+    print(f"max diff = {np.max(np.abs(test_img - ref_img))} (tol = {tol})")
+    return np.allclose(test_img, ref_img, atol=tol)
+
+
+if __name__ == "__main__":
+    build()
+    run_test(sequential_PartB)
+    run_test(simd_PartB)
+    run_test(pthread_PartB, 4)
+    run_test(pthread_simd_PartB, 4)
+    run_test(openmp_PartB, 4)
+    run_test(cuda_PartB)
+    run_test(openacc_PartB)
+    run_test(mpi_PartB)
+```
+
