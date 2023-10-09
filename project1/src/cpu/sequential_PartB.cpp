@@ -5,10 +5,10 @@
 // A naive sequential implementation of image filtering
 //
 
+#include "utils.hpp"
 #include <chrono>
 #include <cmath>
 #include <iostream>
-#include "utils.hpp"
 
 const int FILTER_SIZE = 3;
 const double filter[FILTER_SIZE][FILTER_SIZE] = {
@@ -45,11 +45,13 @@ main(int argc, char** argv)
 
   // Start timer
   auto start_time = std::chrono::high_resolution_clock::now();
-  unsigned char* top_base = input_jpeg.buffer;
-  unsigned char* out_base = filteredImage;
   int row_length = input_jpeg.width * input_jpeg.num_channels;
+  unsigned char* top_base = input_jpeg.buffer;
+  unsigned char* out_base = filteredImage + row_length;
   for (int height = 1; height < input_jpeg.height - 1; height++) {
     for (int width = 1; width < input_jpeg.width - 1; width++) {
+      top_base += input_jpeg.num_channels;
+      out_base += input_jpeg.num_channels;
       unsigned char* mid_base = top_base + row_length;
       unsigned char* bot_base = mid_base + row_length;
 
@@ -104,9 +106,6 @@ main(int argc, char** argv)
       *(out_base + 0) = static_cast<unsigned char>(sum_r);
       *(out_base + 1) = static_cast<unsigned char>(sum_g);
       *(out_base + 2) = static_cast<unsigned char>(sum_b);
-
-      top_base += input_jpeg.num_channels;
-      out_base += input_jpeg.num_channels;
     }
     top_base += input_jpeg.num_channels * 2;
     out_base += input_jpeg.num_channels * 2;
