@@ -10,6 +10,10 @@ const double filter[FILTER_SIZE][FILTER_SIZE] = {
 
 /**
  * Sequentailly compute a single px.
+ *
+ * @param top_base Pointer to the top left px of the 3x3 px block.
+ * @param out_base Pointer to the output px.
+ * @param row_length Length of a row in bytes.
  */
 inline void
 smooth_single_px(const unsigned char* top_base,
@@ -100,6 +104,13 @@ row_filter(int row)
 
 /**
  * Simd compute a single px.
+ *
+ * @param top_base Pointer to the top left px of the 3x3 px block.
+ * @param out_base Pointer to the output px.
+ * @param row_length Length of a row in bytes.
+ * @param filter_t Filter for the top row.
+ * @param filter_m Filter for the middle row.
+ * @param filter_b Filter for the bottom row.
  */
 inline void
 smooth_single_px_simd(const unsigned char* top_base,
