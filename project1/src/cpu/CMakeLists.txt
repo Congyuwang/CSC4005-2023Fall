@@ -39,7 +39,7 @@ target_compile_options(simd_PartA PRIVATE -O2 -mavx2)
 add_executable(simd_PartB
         simd_PartB.cpp
         ../utils.cpp ../utils.hpp)
-target_compile_options(simd_PartB PRIVATE -O2 -mavx2)
+target_compile_options(simd_PartB PRIVATE -O2 -march=native)
 
 ## MPI
 add_executable(mpi_PartA
