@@ -29,13 +29,14 @@ smooth_picture(void* arg)
   int row_length = width * num_channels;
   int task_offset = data->start_height * row_length;
   unsigned char* top_base = data->input_buf + task_offset;
-  unsigned char* out_base = data->output_buf + task_offset + row_length;
+  // one pixel right and one pixel bottom to top_base
+  unsigned char* out_base = data->output_buf + task_offset + row_length + num_channels;
 
   for (int h = data->start_height; h < data->end_height; h++) {
     for (int i = 1; i < width - 1; i++) {
+      smooth_single_px(top_base, out_base, row_length);
       top_base += num_channels;
       out_base += num_channels;
-      smooth_single_px(top_base, out_base, row_length);
     }
     top_base += num_channels * 2;
     out_base += num_channels * 2;

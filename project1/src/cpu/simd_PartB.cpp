@@ -41,12 +41,14 @@ main(int argc, char** argv)
 
   int row_length = input_jpeg.width * input_jpeg.num_channels;
   unsigned char* top_base = input_jpeg.buffer;
-  unsigned char* out_base = filteredImage + row_length;
+  // one pixel right and one pixel bottom to top_base
+  unsigned char* out_base =
+    filteredImage + row_length + input_jpeg.num_channels;
   for (int height = 1; height < input_jpeg.height - 1; height++) {
     for (int width = 1; width < input_jpeg.width - 1; width++) {
+      smooth_single_px_simd(top_base, out_base, row_length, filter_t, filter_m, filter_b);
       top_base += input_jpeg.num_channels;
       out_base += input_jpeg.num_channels;
-      smooth_single_px_simd(top_base, out_base, row_length, filter_t, filter_m, filter_b);
     }
     top_base += input_jpeg.num_channels * 2;
     out_base += input_jpeg.num_channels * 2;

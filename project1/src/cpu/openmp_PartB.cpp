@@ -42,12 +42,13 @@ main(int argc, char** argv)
 
     int task_offset = height * row_length;
     unsigned char* top_base = input_jpeg.buffer + task_offset;
-    unsigned char* out_base = filteredImage + task_offset + row_length;
+    unsigned char* out_base =
+      filteredImage + task_offset + row_length + input_jpeg.num_channels;
 
     for (int width = 1; width < input_jpeg.width - 1; width++) {
+      smooth_single_px(top_base, out_base, row_length);
       top_base += input_jpeg.num_channels;
       out_base += input_jpeg.num_channels;
-      smooth_single_px(top_base, out_base, row_length);
     }
   }
 
