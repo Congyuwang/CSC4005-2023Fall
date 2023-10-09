@@ -84,6 +84,20 @@ load_row(unsigned char* base)
   return _mm256_cvtepi32_ps(ints);
 }
 
+__m256
+row_filter(int row)
+{
+  return _mm256_setr_ps(filter[row][0], // 0, 0
+                        filter[row][0], // 0, 1
+                        filter[row][0], // 0, 2
+                        filter[row][1], // 0, 3
+                        filter[row][1], // 1, 0
+                        filter[row][1], // 1, 1
+                        filter[row][2], // 1, 2
+                        filter[row][2]  // 1, 3
+  );
+}
+
 /**
  * Simd compute a single px.
  */
