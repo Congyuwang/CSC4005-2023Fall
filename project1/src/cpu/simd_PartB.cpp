@@ -1,23 +1,8 @@
+#include "PartB_Core.hpp"
 #include "utils.hpp"
 #include <chrono>
 #include <cmath>
-#include <immintrin.h>
 #include <iostream>
-
-const int FILTER_SIZE = 3;
-const float filter[FILTER_SIZE][FILTER_SIZE] = {
-  { 1.0 / 9, 1.0 / 9, 1.0 / 9 },
-  { 1.0 / 9, 1.0 / 9, 1.0 / 9 },
-  { 1.0 / 9, 1.0 / 9, 1.0 / 9 }
-};
-
-inline __m256
-load_row(unsigned char* base)
-{
-  auto chars = _mm_loadu_si128((__m128i*)base);
-  auto ints = _mm256_cvtepu8_epi32(chars);
-  return _mm256_cvtepi32_ps(ints);
-}
 
 __m256
 row_filter(int row)
@@ -75,47 +60,7 @@ main(int argc, char** argv)
     for (int width = 1; width < input_jpeg.width - 1; width++) {
       top_base += input_jpeg.num_channels;
       out_base += input_jpeg.num_channels;
-      unsigned char* mid_base = top_base + row_length;
-      unsigned char* bot_base = mid_base + row_length;
-
-      // load value
-      __m256 row_t = load_row(top_base);
-      __m256 row_m = load_row(mid_base);
-      __m256 row_b = load_row(bot_base);
-      float cv_r_t_b = top_base[8];
-      float cv_r_m_b = mid_base[8];
-      float cv_r_b_b = bot_base[8];
-
-      // apply filter
-      row_t = _mm256_mul_ps(row_t, filter_t);
-      row_m = _mm256_mul_ps(row_m, filter_m);
-      row_b = _mm256_mul_ps(row_b, filter_b);
-      cv_r_t_b *= filter[0][2];
-      cv_r_m_b *= filter[1][2];
-      cv_r_b_b *= filter[2][2];
-
-      // aggregate rows
-      __m256 result = _mm256_add_ps(row_t, row_m);
-      result = _mm256_add_ps(result, row_b);
-
-      // extract rgb
-      __m256i result_int = _mm256_cvtps_epi32(result);
-      __m128i result_int0 = _mm256_extracti32x4_epi32(result_int, 0);
-      __m128i result_int1 = _mm256_extracti32x4_epi32(result_int, 1);
-      int sum_r = _mm_extract_epi32(result_int0, 0) +
-                  _mm_extract_epi32(result_int0, 3) +
-                  _mm_extract_epi32(result_int1, 2);
-      int sum_g = _mm_extract_epi32(result_int0, 1) +
-                  _mm_extract_epi32(result_int1, 0) +
-                  _mm_extract_epi32(result_int1, 3);
-      int sum_b = _mm_extract_epi32(result_int0, 2) +
-                  _mm_extract_epi32(result_int1, 1) +
-                  static_cast<char>(cv_r_t_b) + static_cast<char>(cv_r_m_b) +
-                  static_cast<char>(cv_r_b_b);
-
-      *(out_base + 0) = static_cast<unsigned char>(sum_r);
-      *(out_base + 1) = static_cast<unsigned char>(sum_g);
-      *(out_base + 2) = static_cast<unsigned char>(sum_b);
+      smooth_single_px_simd(top_base, out_base, row_length, filter_t, filter_m, filter_b);
     }
     top_base += input_jpeg.num_channels * 2;
     out_base += input_jpeg.num_channels * 2;
@@ -125,7 +70,7 @@ main(int argc, char** argv)
   auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(
     end_time - start_time);
 
-  // Save output Gray JPEG Image
+  // Save output JPEG image
   const char* output_filepath = argv[2];
   std::cout << "Output file to: " << output_filepath << "\n";
   JPEGMeta output_jpeg{ filteredImage,

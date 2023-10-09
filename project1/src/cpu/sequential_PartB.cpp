@@ -5,17 +5,11 @@
 // A naive sequential implementation of image filtering
 //
 
+#include "PartB_Core.hpp"
 #include "utils.hpp"
 #include <chrono>
 #include <cmath>
 #include <iostream>
-
-const int FILTER_SIZE = 3;
-const double filter[FILTER_SIZE][FILTER_SIZE] = {
-  { 1.0 / 9, 1.0 / 9, 1.0 / 9 },
-  { 1.0 / 9, 1.0 / 9, 1.0 / 9 },
-  { 1.0 / 9, 1.0 / 9, 1.0 / 9 }
-};
 
 int
 main(int argc, char** argv)
@@ -52,64 +46,12 @@ main(int argc, char** argv)
     for (int width = 1; width < input_jpeg.width - 1; width++) {
       top_base += input_jpeg.num_channels;
       out_base += input_jpeg.num_channels;
-      unsigned char* mid_base = top_base + row_length;
-      unsigned char* bot_base = mid_base + row_length;
-
-      unsigned char cv_l_t_r = top_base[0];
-      unsigned char cv_l_t_g = top_base[1];
-      unsigned char cv_l_t_b = top_base[2];
-      unsigned char cv_m_t_r = top_base[3];
-      unsigned char cv_m_t_g = top_base[4];
-      unsigned char cv_m_t_b = top_base[5];
-      unsigned char cv_r_t_r = top_base[6];
-      unsigned char cv_r_t_g = top_base[7];
-      unsigned char cv_r_t_b = top_base[8];
-
-      unsigned char cv_l_m_r = mid_base[0];
-      unsigned char cv_l_m_g = mid_base[1];
-      unsigned char cv_l_m_b = mid_base[2];
-      unsigned char cv_m_m_r = mid_base[3];
-      unsigned char cv_m_m_g = mid_base[4];
-      unsigned char cv_m_m_b = mid_base[5];
-      unsigned char cv_r_m_r = mid_base[6];
-      unsigned char cv_r_m_g = mid_base[7];
-      unsigned char cv_r_m_b = mid_base[8];
-
-      unsigned char cv_l_b_r = bot_base[0];
-      unsigned char cv_l_b_g = bot_base[1];
-      unsigned char cv_l_b_b = bot_base[2];
-      unsigned char cv_m_b_r = bot_base[3];
-      unsigned char cv_m_b_g = bot_base[4];
-      unsigned char cv_m_b_b = bot_base[5];
-      unsigned char cv_r_b_r = bot_base[6];
-      unsigned char cv_r_b_g = bot_base[7];
-      unsigned char cv_r_b_b = bot_base[8];
-
-      int sum_r = cv_l_t_r * filter[0][0] + cv_m_t_r * filter[0][1] +
-                  cv_r_t_r * filter[0][2] + cv_l_m_r * filter[1][0] +
-                  cv_m_m_r * filter[1][1] + cv_r_m_r * filter[1][2] +
-                  cv_l_b_r * filter[2][0] + cv_m_b_r * filter[2][1] +
-                  cv_r_b_r * filter[2][2];
-
-      int sum_g = cv_l_t_g * filter[0][0] + cv_m_t_g * filter[0][1] +
-                  cv_r_t_g * filter[0][2] + cv_l_m_g * filter[1][0] +
-                  cv_m_m_g * filter[1][1] + cv_r_m_g * filter[1][2] +
-                  cv_l_b_g * filter[2][0] + cv_m_b_g * filter[2][1] +
-                  cv_r_b_g * filter[2][2];
-
-      int sum_b = cv_l_t_b * filter[0][0] + cv_m_t_b * filter[0][1] +
-                  cv_r_t_b * filter[0][2] + cv_l_m_b * filter[1][0] +
-                  cv_m_m_b * filter[1][1] + cv_r_m_b * filter[1][2] +
-                  cv_l_b_b * filter[2][0] + cv_m_b_b * filter[2][1] +
-                  cv_r_b_b * filter[2][2];
-
-      *(out_base + 0) = static_cast<unsigned char>(sum_r);
-      *(out_base + 1) = static_cast<unsigned char>(sum_g);
-      *(out_base + 2) = static_cast<unsigned char>(sum_b);
+      smooth_single_px(top_base, out_base, row_length);
     }
     top_base += input_jpeg.num_channels * 2;
     out_base += input_jpeg.num_channels * 2;
   }
+  // End timer
   auto end_time = std::chrono::high_resolution_clock::now();
   auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(
     end_time - start_time);

@@ -27,6 +27,7 @@ target_compile_options(sequential_PartA PRIVATE -O2)
 
 add_executable(sequential_PartB
         sequential_PartB.cpp
+        PartB_Core.hpp
         ../utils.cpp ../utils.hpp)
 target_compile_options(sequential_PartB PRIVATE -O2)
 
@@ -38,6 +39,7 @@ target_compile_options(simd_PartA PRIVATE -O2 -mavx2)
 
 add_executable(simd_PartB
         simd_PartB.cpp
+        PartB_Core.hpp
         ../utils.cpp ../utils.hpp)
 target_compile_options(simd_PartB PRIVATE -O2 -mavx2)
 
