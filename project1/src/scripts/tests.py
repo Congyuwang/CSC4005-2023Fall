@@ -18,6 +18,7 @@ pthread_PartB = "./build/src/cpu/pthread_PartB"
 pthread_simd_PartB = "./build/src/cpu/pthread_simd_PartB"
 openmp_PartB = "./build/src/cpu/openmp_PartB"
 cuda_PartB = "./build/src/gpu/cuda_PartB"
+openacc_PartB = "./build/src/gpu/openacc_PartB"
 
 
 def build():
@@ -83,3 +84,4 @@ if __name__ == "__main__":
     run_test(pthread_simd_PartB, 4)
     run_test(openmp_PartB, 4)
     run_test(cuda_PartB)
+    run_test(openacc_PartB)
