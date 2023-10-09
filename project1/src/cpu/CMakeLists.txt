@@ -62,8 +62,16 @@ add_executable(pthread_PartB
         pthread_PartB.cpp
         PartB_Core.hpp
         ../utils.cpp ../utils.hpp)
-target_compile_options(simd_PartB PRIVATE -O2)
+target_compile_options(pthread_PartB PRIVATE -O2)
 target_link_libraries(pthread_PartB PRIVATE pthread)
+
+## Pthread + AVX2
+add_executable(pthread_simd_PartB
+        pthread_simd_PartB.cpp
+        PartB_Core.hpp
+        ../utils.cpp ../utils.hpp)
+target_compile_options(pthread_simd_PartB PRIVATE -O2 -mavx2)
+target_link_libraries(pthread_simd_PartB PRIVATE pthread)
 
 ## OpenMP
 add_executable(openmp_PartA
