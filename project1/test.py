@@ -20,6 +20,7 @@ simd_PartB = "./build/src/cpu/simd_PartB"
 pthread_PartB = "./build/src/cpu/pthread_PartB"
 pthread_simd_PartB = "./build/src/cpu/pthread_simd_PartB"
 openmp_PartB = "./build/src/cpu/openmp_PartB"
+cuda_PartB = "./build/src/gpu/cuda_PartB"
 
 
 def build():
@@ -50,7 +51,7 @@ def load_img(img: str) -> np.array:
 def comapre_img(test_img: str, ref_img: str) -> bool:
     test_img = load_img(test_img)
     ref_img = load_img(ref_img)
-    print(f"max diff = {np.max(np.abs(test_img - ref_img))}")
+    print(f"max diff = {np.max(np.abs(test_img - ref_img))} (tol = {TOL})")
     return np.allclose(test_img, ref_img, atol=TOL)
 
 
@@ -61,3 +62,4 @@ if __name__ == "__main__":
     run_test_output(pthread_PartB, 4)
     run_test_output(pthread_simd_PartB, 4)
     run_test_output(openmp_PartB, 4)
+    run_test_output(cuda_PartB)
