@@ -6,8 +6,8 @@ Student ID: 116020237
 
 ```sh
 cd project1
-cmake -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build --parallel 4 --config Release --verbose
+cmake -B build
+cmake --build build --parallel 4 --verbose
 ```
 
 ## Part A
@@ -36,3 +36,12 @@ The plot is here:
 <div>
     <img src="report/PartA.png" align="center" alt="Performance Evaluation of PartA"/>
 </div>
+
+# PartB
+
+It is interesting that unrolling brings almost 100% speedup.
+
+It is interesting that there is usually little improvement from 1 core to 2 cores.
+Is the overhead of multithreading that big? Why is this?
+
+It's funny. Using double filter takes about 200ms for gpt, which is 10x slower than single filter.
