@@ -12,12 +12,12 @@ const double filter[FILTER_SIZE][FILTER_SIZE] = {
  * Sequentailly compute a single px.
  */
 inline void
-smooth_single_px(unsigned char* top_base,
+smooth_single_px(const unsigned char* top_base,
                  unsigned char* out_base,
                  int row_length)
 {
-  unsigned char* mid_base = top_base + row_length;
-  unsigned char* bot_base = mid_base + row_length;
+  const unsigned char* mid_base = top_base + row_length;
+  const unsigned char* bot_base = mid_base + row_length;
 
   unsigned char cv_l_t_r = top_base[0];
   unsigned char cv_l_t_g = top_base[1];
@@ -77,7 +77,7 @@ smooth_single_px(unsigned char* top_base,
 #include <immintrin.h>
 
 inline __m256
-load_row(unsigned char* base)
+load_row(const unsigned char* base)
 {
   auto chars = _mm_loadu_si128((__m128i*)base);
   auto ints = _mm256_cvtepu8_epi32(chars);
@@ -102,15 +102,15 @@ row_filter(int row)
  * Simd compute a single px.
  */
 inline void
-smooth_single_px_simd(unsigned char* top_base,
+smooth_single_px_simd(const unsigned char* top_base,
                       unsigned char* out_base,
                       int row_length,
                       __m256 filter_t,
                       __m256 filter_m,
                       __m256 filter_b)
 {
-  unsigned char* mid_base = top_base + row_length;
-  unsigned char* bot_base = mid_base + row_length;
+  const unsigned char* mid_base = top_base + row_length;
+  const unsigned char* bot_base = mid_base + row_length;
 
   // load value
   __m256 row_t = load_row(top_base);
