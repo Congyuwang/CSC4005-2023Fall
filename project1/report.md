@@ -86,13 +86,16 @@ The graph:
    (e.g., `height * width + xx`), but use incremental index
    (e.g., `pos += width`) or something similar.
 
-4. In SIMD part, `set` methods such as `_mm256_set_epi8` is very inefficient,
-   and it is **not a single instruction**! Never use this for high performance code.
+4. Combining SIMD and threading gives good CPU performance.
 
-5. 256-bit wide SIMD instructions can be more energy efficient than 512-bit,
+5. In SIMD part, `set` methods such as `_mm256_set_epi8` is very inefficient,
+   and it is **not a single instruction**! Never use this for high performance code.
+   Use `load` to properly load value into SIMD registers.
+
+6. 256-bit wide SIMD instructions can be more energy efficient than 512-bit,
    and can have better compatibility to wider cpu-platforms.
 
-6. In CUDA code, using `double` filter makes the computation about
+7. In CUDA code, using `double` filter makes the computation about
    10x slower than `single` filter.
 
 ### Other Observations
