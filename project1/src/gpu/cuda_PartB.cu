@@ -23,7 +23,7 @@ smooth_single_px(const unsigned char* input_buf,
   int idx = blockIdx.x * blockDim.x + threadIdx.x;
 
   // keep the border
-  int h = idx / width;
+int h = idx / width;
   int w = idx % width;
   if (w >= width - 2 || h >= height - 2) {
     return;
@@ -123,7 +123,7 @@ int main(int argc, char** argv)
     cudaEventCreate(&start);
     cudaEventCreate(&stop);
     int blockSize = 512;
-    int numBlocks = (input_jpeg.width * input_jpeg.height) / blockSize + 1;
+    int numBlocks = (input_jpeg.width * (input_jpeg.height - 2)) / blockSize + 1;
     int row_length = input_jpeg.width * input_jpeg.num_channels;
     cudaEventRecord(start, 0); // GPU start time
     smooth_single_px<<<numBlocks, blockSize>>>(
