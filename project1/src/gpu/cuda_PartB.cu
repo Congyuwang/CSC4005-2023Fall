@@ -23,7 +23,7 @@ smooth_single_px(const unsigned char* input_buf,
   int idx = blockIdx.x * blockDim.x + threadIdx.x;
 
   // keep the border
-int h = idx / width;
+  int h = idx / width;
   int w = idx % width;
   if (w >= width - 2 || h >= height - 2) {
     return;
