@@ -10,22 +10,54 @@
 #include <chrono>
 #include "matrix.hpp"
 
-Matrix matrix_multiply_simd(const Matrix& matrix1, const Matrix& matrix2) {
-    if (matrix1.getCols() != matrix2.getRows()) {
-        throw std::invalid_argument(
-            "Matrix dimensions are not compatible for multiplication.");
+inline void
+simd_add_to_result_i(int* result_i,
+                     const int m1_ik,
+                     const int* m2_k,
+                     const size_t N)
+{
+  const size_t N_BY_8 = N / 8;
+  __m256i m1_ik8 = _mm256_set1_epi32(m1_ik);
+  __m256i_u* result_i_j = (__m256i_u*) result_i;
+  __m256i_u* m2_k_j = (__m256i_u*) m2_k;
+  for (size_t j = 0; j < N_BY_8; ++j) {
+
+    __m256i result_i8 = _mm256_loadu_si256(result_i_j);
+    __m256i m2_k8 = _mm256_loadu_si256(m2_k_j);
+
+    __m256i out = _mm256_add_epi32(result_i8, _mm256_mul_epu32(m1_ik8, m2_k8));
+    _mm256_storeu_si256(result_i_j, out);
+
+    result_i_j++;
+    m2_k_j++;
+  }
+}
+
+Matrix
+matrix_multiply_simd(const Matrix& matrix1, const Matrix& matrix2)
+{
+  if (matrix1.getCols() != matrix2.getRows()) {
+    throw std::invalid_argument(
+      "Matrix dimensions are not compatible for multiplication.");
+  }
+
+  size_t M = matrix1.getRows(), K = matrix1.getCols(), N = matrix2.getCols();
+
+  Matrix result(M, N);
+
+  for (size_t i = 0; i < M; ++i) {
+    const int* m1_i = matrix1[i];
+
+    for (size_t k = 0; k < K; ++k) {
+      const int m1_ik = m1_i[k];
+      const int* m2_k = matrix2[k];
+      int* result_i = result[i];
+
+      simd_add_to_result_i(result_i, m1_ik, m2_k, N);
     }
+  }
 
-    size_t M = matrix1.getRows(), K = matrix1.getCols(), N = matrix2.getCols();
-
-    Matrix result(M, N);
-
-    // Your Code Here!
-    // Optimizing Matrix Multiplication 
-    // In addition to Memory Locality and Cache Missing,
-    // Further Applying SIMD
-
-    return result;
+  return result;
 }
 
 int main(int argc, char** argv) {
