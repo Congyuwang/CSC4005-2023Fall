@@ -50,8 +50,8 @@ target_compile_options(simd_aligned_tiled PRIVATE -O2 -mavx512f)
 ## OpenMP
 add_executable(openmp
         openmp.cpp
-        matrix.cpp matrix.hpp)
-target_compile_options(openmp PRIVATE -O2 -fopenmp -mavx2)
+        matrix_aligned.cpp matrix_aligned.hpp)
+target_compile_options(openmp PRIVATE -O2 -fopenmp -mavx512f)
 target_include_directories(openmp PRIVATE ${OpenMP_CXX_INCLUDE_DIRS})
 target_link_libraries(openmp PRIVATE ${OpenMP_CXX_LIBRARIES})
 

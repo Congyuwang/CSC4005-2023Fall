@@ -25,6 +25,7 @@ simd = "srun -n 1 --cpus-per-task 1 ./build/src/simd"
 simd_aligned = "srun -n 1 --cpus-per-task 1 ./build/src/simd_aligned"
 simd_tiled = "srun -n 1 --cpus-per-task 1 ./build/src/simd_tiled"
 simd_aligned_tiled = "srun -n 1 --cpus-per-task 1 ./build/src/simd_aligned_tiled"
+openmp = "srun -n 1 --cpus-per-task {ncpu} ./build/src/openmp {ncpu}"
 
 
 def build():
@@ -70,6 +71,9 @@ def tests_with_data(ref_result, mats):
     run_test(simd_aligned, ref_result, mats)
     run_test(simd_tiled, ref_result, mats)
     run_test(simd_aligned_tiled, ref_result, mats)
+    run_test(openmp.format(ncpu=1), ref_result, mats)
+    run_test(openmp.format(ncpu=4), ref_result, mats)
+    run_test(openmp.format(ncpu=32), ref_result, mats)
 
 
 if __name__ == "__main__":
