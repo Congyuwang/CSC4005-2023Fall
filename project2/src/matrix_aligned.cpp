@@ -1,10 +1,3 @@
-//
-// Created by Yang Yufan on 2023/10/07.
-// Email: yufanyang1@link.cuhk.edu.cn
-//
-// Simple Matrix Implementation
-//
-
 #include "matrix_aligned.hpp"
 #include <fstream>
 #include <iostream>
@@ -22,8 +15,8 @@ MatrixAligned::MatrixAligned(size_t rows, size_t cols)
   data = new int*[rows];
   for (size_t i = 0; i < rows; ++i) {
     // +8 for SIMD alignment
-    mem[i] = new int[cols + 16];
-    memset(mem[i], 0, (cols + 16) * sizeof(int));
+    mem[i] = new int[cols + 32];
+    memset(mem[i], 0, (cols + 32) * sizeof(int));
     data[i] = (int*)(((uintptr_t)mem[i] + 63) & ALIGN_MASK_32);
   }
 }

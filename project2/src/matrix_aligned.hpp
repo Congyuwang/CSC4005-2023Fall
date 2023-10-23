@@ -1,12 +1,5 @@
-//
-// Created by Yang Yufan on 2023/10/07.
-// Email: yufanyang1@link.cuhk.edu.cn
-//
-// Simple Matrix Declaration
-//
-
-#ifndef CSC4005_PROJECT_2_MATRIX_HPP
-#define CSC4005_PROJECT_2_MATRIX_HPP
+#ifndef CSC4005_PROJECT_2_MATRIX_ALIGNED_HPP
+#define CSC4005_PROJECT_2_MATRIX_ALIGNED_HPP
 
 #include <iostream>
 #include <vector>
