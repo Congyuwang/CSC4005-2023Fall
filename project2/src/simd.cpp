@@ -47,8 +47,9 @@ matrix_multiply_simd(const Matrix& matrix1, const Matrix& matrix2)
 
   for (size_t i = 0; i < M; ++i) {
     const int* m1_i = matrix1[i];
+    int* result_i = result[i];
     for (size_t k = 0; k < K; ++k) {
-      simd_add_to_result_i(result[i], m1_i[k], matrix2[k], N);
+      simd_add_to_result_i(result_i, m1_i[k], matrix2[k], N);
     }
   }
 
