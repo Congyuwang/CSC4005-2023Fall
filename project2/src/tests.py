@@ -10,6 +10,7 @@ ENDC = '\033[0m'
 MAT = "./matrices/matrix{}.txt"
 REF_RESULT = "./build/ref_result_{}.txt"
 RESULT = "./build/result.txt"
+PERF_OUT_FOLDER = "./profiling"
 
 TESTS_SUITS = [
     (REF_RESULT.format(12), MAT.format(1), MAT.format(2)),
@@ -28,6 +29,23 @@ simd_aligned_tiled = "srun -n 1 --cpus-per-task 1 ./build/src/simd_aligned_tiled
 openmp = "srun -n 1 --cpus-per-task {ncpu} ./build/src/openmp {ncpu}"
 mpi = "srun -n {nproc} --cpus-per-task {ncpu} --mpi=pmi2 ./build/src/mpi {ncpu}"
 
+basic_perf_naive = "srun -n 1 --cpus-per-task 1 perf stat -e cpu-cycles,cache-misses,page-faults ./build/src/naive"
+basic_perf_locality = "srun -n 1 --cpus-per-task 1 perf stat -e cpu-cycles,cache-misses,page-faults ./build/src/locality"
+basic_perf_simd = "srun -n 1 --cpus-per-task 1 perf stat -e cpu-cycles,cache-misses,page-faults ./build/src/simd"
+basic_perf_simd_aligned = "srun -n 1 --cpus-per-task 1 perf stat -e cpu-cycles,cache-misses,page-faults ./build/src/simd_aligned"
+basic_perf_simd_tiled = "srun -n 1 --cpus-per-task 1 perf stat -e cpu-cycles,cache-misses,page-faults ./build/src/simd_tiled"
+basic_perf_simd_aligned_tiled = "srun -n 1 --cpus-per-task 1 perf stat -e cpu-cycles,cache-misses,page-faults ./build/src/simd_aligned_tiled"
+basic_perf_openmp = "srun -n 1 --cpus-per-task {ncpu} perf stat -e cpu-cycles,cache-misses,page-faults ./build/src/openmp {ncpu}"
+basic_perf_mpi = "srun -n {nproc} --cpus-per-task {ncpu} --mpi=pmi2 perf stat -e cpu-cycles,cache-misses,page-faults ./build/src/mpi {ncpu}"
+
+detailed_perf_naive = "srun -n 1 --cpus-per-task 1 perf record -e cpu-cycles,cache-misses,page-faults -g -o ./profiling/naive.data ./build/src/naive"
+detailed_perf_locality = "srun -n 1 --cpus-per-task 1 perf record -e cpu-cycles,cache-misses,page-faults -g -o ./profiling/locality.data ./build/src/locality"
+detailed_perf_simd = "srun -n 1 --cpus-per-task 1 perf record -e cpu-cycles,cache-misses,page-faults -g -o ./profiling/simd.data ./build/src/simd"
+detailed_perf_simd_aligned = "srun -n 1 --cpus-per-task 1 perf record -e cpu-cycles,cache-misses,page-faults -g -o ./profiling/simd_aligned.data ./build/src/simd_aligned"
+detailed_perf_simd_tiled = "srun -n 1 --cpus-per-task 1 perf record -e cpu-cycles,cache-misses,page-faults -g -o ./profiling/simd_tiled.data ./build/src/simd_tiled"
+detailed_perf_simd_aligned_tiled = "srun -n 1 --cpus-per-task 1 perf record -e cpu-cycles,cache-misses,page-faults -g -o ./profiling/simd_aligned_tiled.data ./build/src/simd_aligned_tiled"
+detailed_perf_openmp = "srun -n 1 --cpus-per-task {ncpu} perf record -e cpu-cycles,cache-misses,page-faults -g -o ./profiling/openmp-{ncpu}.data ./build/src/openmp {ncpu}"
+detailed_perf_mpi = "srun -n {nproc} --cpus-per-task {ncpu} --mpi=pmi2 perf record -e cpu-cycles,cache-misses,page-faults -g -o ./profiling/mpi-nproc{nproc}-ncpu{ncpu}.data ./build/src/mpi {ncpu}"
 
 def build():
     """run build command."""
@@ -67,7 +85,6 @@ def compare_files(file1, file2):
 
 
 def tests_with_data(ref_result, mats):
-    run_test(locality, ref_result, mats)
     run_test(simd, ref_result, mats)
     run_test(simd_aligned, ref_result, mats)
     run_test(simd_tiled, ref_result, mats)
@@ -81,9 +98,40 @@ def tests_with_data(ref_result, mats):
     run_test(mpi.format(nproc=32, ncpu=1), ref_result, mats)
 
 
+def run_perf(ref_result, mats):
+    run_test(basic_perf_naive, ref_result, mats)
+    run_test(basic_perf_locality, ref_result, mats)
+    run_test(basic_perf_simd, ref_result, mats)
+    run_test(basic_perf_simd_aligned, ref_result, mats)
+    run_test(basic_perf_simd_tiled, ref_result, mats)
+    run_test(basic_perf_simd_aligned_tiled, ref_result, mats)
+    run_test(basic_perf_openmp.format(ncpu=1), ref_result, mats)
+    run_test(basic_perf_openmp.format(ncpu=4), ref_result, mats)
+    run_test(basic_perf_openmp.format(ncpu=32), ref_result, mats)
+    run_test(basic_perf_mpi.format(nproc=1, ncpu=32), ref_result, mats)
+    run_test(basic_perf_mpi.format(nproc=4, ncpu=8), ref_result, mats)
+    run_test(basic_perf_mpi.format(nproc=8, ncpu=4), ref_result, mats)
+    run_test(basic_perf_mpi.format(nproc=32, ncpu=1), ref_result, mats)
+    if not os.path.exists(PERF_OUT_FOLDER):
+        os.makedirs(PERF_OUT_FOLDER)
+    run_test(detailed_perf_locality, ref_result, mats)
+    run_test(detailed_perf_simd, ref_result, mats)
+    run_test(detailed_perf_simd_aligned, ref_result, mats)
+    run_test(detailed_perf_simd_tiled, ref_result, mats)
+    run_test(detailed_perf_simd_aligned_tiled, ref_result, mats)
+    run_test(detailed_perf_openmp.format(ncpu=1), ref_result, mats)
+    run_test(detailed_perf_openmp.format(ncpu=4), ref_result, mats)
+    run_test(detailed_perf_openmp.format(ncpu=32), ref_result, mats)
+    run_test(detailed_perf_mpi.format(nproc=1, ncpu=32), ref_result, mats)
+    run_test(detailed_perf_mpi.format(nproc=4, ncpu=8), ref_result, mats)
+
+
 if __name__ == "__main__":
     build()
     create_ref_results()
     for ref_result, mat_a, mat_b in TESTS_SUITS:
         print(f"{HEADER}>>>==== TESTING WITH MATS {[mat_a, mat_b]} ====<<<{ENDC}")
         tests_with_data(ref_result, [mat_a, mat_b])
+    print(f"{HEADER}>>>==== Start Running Basic Perf ====<<<{ENDC}")
+    ref_result, mat_a, mat_b = TESTS_SUITS[3]
+    run_perf(ref_result, [mat_a, mat_b])
