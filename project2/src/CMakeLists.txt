@@ -29,6 +29,12 @@ add_executable(simd
         matrix.cpp matrix.hpp)
 target_compile_options(simd PRIVATE -O2 -mavx2)
 
+## SIMD Vectorization Aligned (AVX2)
+add_executable(simd_aligned
+        simd_aligned.cpp
+        matrix_aligned.cpp matrix_aligned.hpp)
+target_compile_options(simd_aligned PRIVATE -O2 -mavx2)
+
 ## OpenMP
 add_executable(openmp
         openmp.cpp

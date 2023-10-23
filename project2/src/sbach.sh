@@ -23,6 +23,11 @@ echo "SIMD + Memory Locality Matrix Multiplication (Optimized with -O2)"
 srun -n 1 --cpus-per-task 1 ${CURRENT_DIR}/../build/src/simd ${CURRENT_DIR}/../matrices/matrix5.txt ${CURRENT_DIR}/../matrices/matrix6.txt ${CURRENT_DIR}/../build/result.txt
 echo ""
 
+# SIMD + Reordering + Aligned
+echo "SIMD + ALIGNED Memory Locality Matrix Multiplication (Optimized with -O2)"
+srun -n 1 --cpus-per-task 1 ${CURRENT_DIR}/../build/src/simd_aligned ${CURRENT_DIR}/../matrices/matrix5.txt ${CURRENT_DIR}/../matrices/matrix6.txt ${CURRENT_DIR}/../build/result.txt
+echo ""
+
 # OpenMP + SIMD + Reordering
 echo "OpenMP + SIMD + Memory Locality Matrix Multiplication (Optimized with -O2)"
 for num_cores in 1 2 4 8 16 32
