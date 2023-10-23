@@ -25,8 +25,9 @@ simd_add_to_result_i_aligned(int* result_i,
     __m256i result_i8 = _mm256_load_si256(result_i_j);
     __m256i m2_k8 = _mm256_load_si256(m2_k_j);
 
-    __m256i out = _mm256_add_epi32(result_i8, _mm256_mul_epu32(m1_ik8, m2_k8));
-    _mm256_store_si256(result_i_j, out);
+    __m256i mult = _mm256_mullo_epi32(m1_ik8, m2_k8);
+    __m256i add = _mm256_add_epi32(result_i8, mult);
+    _mm256_store_si256(result_i_j, add);
 
     result_i_j++;
     m2_k_j++;
