@@ -22,9 +22,9 @@ MatrixAligned::MatrixAligned(size_t rows, size_t cols)
   data = new int*[rows];
   for (size_t i = 0; i < rows; ++i) {
     // +8 for SIMD alignment
-    mem[i] = new int[cols + 8];
-    memset(mem[i], 0, (cols + 8) * sizeof(int));
-    data[i] = (int*)(((uintptr_t)mem[i] + 31) & ALIGN_MASK_32);
+    mem[i] = new int[cols + 16];
+    memset(mem[i], 0, (cols + 16) * sizeof(int));
+    data[i] = (int*)(((uintptr_t)mem[i] + 63) & ALIGN_MASK_32);
   }
 }
 
@@ -36,26 +36,6 @@ MatrixAligned::~MatrixAligned()
       delete[] mem[i];
     }
     delete[] mem;
-  }
-}
-
-int*
-MatrixAligned::operator[](size_t rowIndex)
-{
-  if (rowIndex < rows) {
-    return data[rowIndex];
-  } else {
-    throw std::out_of_range("Row index out of range");
-  }
-}
-
-const int*
-MatrixAligned::operator[](size_t rowIndex) const
-{
-  if (rowIndex < rows) {
-    return data[rowIndex];
-  } else {
-    throw std::out_of_range("Row index out of range");
   }
 }
 

@@ -17,9 +17,9 @@ Matrix::Matrix(size_t rows, size_t cols) : rows(rows), cols(cols) {
     // Allocate memory for the matrix
     data = new int*[rows];
     for (size_t i = 0; i < rows; ++i) {
-        // +8 for SIMD convenience
-        data[i] = new int[cols + 8];
-        memset(data[i], 0, cols * sizeof(int));
+        // +16 for SIMD convenience
+        data[i] = new int[cols + 16];
+        memset(data[i], 0, (cols + 16) * sizeof(int));
     }
 }
 
@@ -30,22 +30,6 @@ Matrix::~Matrix() {
             delete[] data[i];
         }
         delete[] data;
-    }
-}
-
-int* Matrix::operator[](size_t rowIndex) {
-    if (rowIndex < rows) {
-        return data[rowIndex];
-    } else {
-        throw std::out_of_range("Row index out of range");
-    }
-}
-
-const int* Matrix::operator[](size_t rowIndex) const {
-    if (rowIndex < rows) {
-        return data[rowIndex];
-    } else {
-        throw std::out_of_range("Row index out of range");
     }
 }
 

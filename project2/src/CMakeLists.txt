@@ -35,6 +35,18 @@ add_executable(simd_aligned
         matrix_aligned.cpp matrix_aligned.hpp)
 target_compile_options(simd_aligned PRIVATE -O2 -mavx2)
 
+## SIMD Vectorization (AVX512) Tiled
+add_executable(simd_tiled
+        simd_tiled.cpp
+        matrix.cpp matrix.hpp)
+target_compile_options(simd_tiled PRIVATE -O2 -mavx512f)
+
+## SIMD Vectorization Aligned (AVX512) Tiled
+add_executable(simd_aligned_tiled
+        simd_aligned_tiled.cpp
+        matrix_aligned.cpp matrix_aligned.hpp)
+target_compile_options(simd_aligned_tiled PRIVATE -O2 -mavx512f)
+
 ## OpenMP
 add_executable(openmp
         openmp.cpp

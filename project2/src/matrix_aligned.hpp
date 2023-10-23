@@ -11,7 +11,7 @@
 #include <iostream>
 #include <vector>
 
-const uintptr_t ALIGN_MASK_32 = ~0b11111;
+const uintptr_t ALIGN_MASK_32 = ~0b111111;
 
 class MatrixAligned
 {
@@ -29,10 +29,10 @@ public:
   ~MatrixAligned();
 
   // Overload the [] operator for convenient element access
-  int* operator[](size_t rowIndex);
+  inline int* operator[](size_t rowIndex) { return data[rowIndex]; }
 
   // Read only element access
-  const int* operator[](size_t rowIndex) const;
+  inline const int* operator[](size_t rowIndex) const { return data[rowIndex]; }
 
   // Function to display the matrix
   void display() const;
