@@ -11,6 +11,12 @@ if (OpenMP_CXX_FOUND)
 endif ()
 
 # Add Executables
+## Naive Old
+add_executable(naive_old
+        naive_old.cpp
+        matrix_old.cpp matrix_old.hpp)
+target_compile_options(naive_old PRIVATE -O2)
+
 ## Naive
 add_executable(naive
         naive.cpp
