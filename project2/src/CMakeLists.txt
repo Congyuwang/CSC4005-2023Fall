@@ -33,7 +33,7 @@ target_compile_options(locality PRIVATE -O2)
 add_executable(simd
         simd.cpp
         matrix.cpp matrix.hpp)
-target_compile_options(simd PRIVATE -O2 -mavx2)
+target_compile_options(simd PRIVATE -O2 -mavx2 -mno-avx256-split-unaligned-load -mno-avx256-split-unaligned-store)
 
 ## SIMD Vectorization Aligned (AVX2)
 add_executable(simd_aligned

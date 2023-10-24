@@ -46,3 +46,6 @@
 # Certain Images
 *20K*.jpg
 *test.jpg
+
+# Perf data (too large)
+*.data

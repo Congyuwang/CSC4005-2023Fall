@@ -40,14 +40,14 @@ basic_perf_simd_aligned_tiled = "srun -n 1 --cpus-per-task 1 --partition Project
 basic_perf_openmp = "srun -n 1 --cpus-per-task {ncpu} --partition Project perf stat -e cpu-cycles,cache-misses,page-faults,branch-misses ./build/src/openmp {ncpu}"
 basic_perf_mpi = "srun -n {nproc} --cpus-per-task {ncpu} --mpi=pmi2 --partition Project perf stat -e cpu-cycles,cache-misses,page-faults,branch-misses ./build/src/mpi {ncpu}"
 
-detailed_perf_naive_old = "srun -n 1 --cpus-per-task 1 --partition Project perf record -e cpu-cycles,cache-misses,page-faults,branch-misses -g -o ./profiling/naive_old.data ./build/src/naive_old"
-detailed_perf_naive = "srun -n 1 --cpus-per-task 1 --partition Project perf record -e cpu-cycles,cache-misses,page-faults,branch-misses -g -o ./profiling/naive.data ./build/src/naive"
-detailed_perf_locality = "srun -n 1 --cpus-per-task 1 --partition Project perf record -e cpu-cycles,cache-misses,page-faults,branch-misses -g -o ./profiling/locality.data ./build/src/locality"
-detailed_perf_simd = "srun -n 1 --cpus-per-task 1 --partition Project perf record -e cpu-cycles,cache-misses,page-faults,branch-misses -g -o ./profiling/simd.data ./build/src/simd"
-detailed_perf_simd_aligned = "srun -n 1 --cpus-per-task 1 --partition Project perf record -e cpu-cycles,cache-misses,page-faults,branch-misses -g -o ./profiling/simd_aligned.data ./build/src/simd_aligned"
-detailed_perf_simd_tiled = "srun -n 1 --cpus-per-task 1 --partition Project perf record -e cpu-cycles,cache-misses,page-faults,branch-misses -g -o ./profiling/simd_tiled.data ./build/src/simd_tiled"
-detailed_perf_simd_aligned_tiled = "srun -n 1 --cpus-per-task 1 --partition Project perf record -e cpu-cycles,cache-misses,page-faults,branch-misses -g -o ./profiling/simd_aligned_tiled.data ./build/src/simd_aligned_tiled"
-detailed_perf_openmp = "srun -n 1 --cpus-per-task {ncpu} --partition Project perf record -e cpu-cycles,cache-misses,page-faults,branch-misses -g -o ./profiling/openmp-{ncpu}.data ./build/src/openmp {ncpu}"
+detailed_perf_naive_old = "srun -n 1 --cpus-per-task 1 --partition Project perf record -e cpu-cycles:pp,cache-misses,page-faults,branch-misses -g -o ./profiling/naive_old.data ./build/src/naive_old"
+detailed_perf_naive = "srun -n 1 --cpus-per-task 1 --partition Project perf record -e cpu-cycles:pp,cache-misses,page-faults,branch-misses -g -o ./profiling/naive.data ./build/src/naive"
+detailed_perf_locality = "srun -n 1 --cpus-per-task 1 --partition Project perf record -e cpu-cycles:pp,cache-misses,page-faults,branch-misses -g -o ./profiling/locality.data ./build/src/locality"
+detailed_perf_simd = "srun -n 1 --cpus-per-task 1 --partition Project perf record -e cpu-cycles:pp,cache-misses,page-faults,branch-misses -g -o ./profiling/simd.data ./build/src/simd"
+detailed_perf_simd_aligned = "srun -n 1 --cpus-per-task 1 --partition Project perf record -e cpu-cycles:pp,cache-misses,page-faults,branch-misses -g -o ./profiling/simd_aligned.data ./build/src/simd_aligned"
+detailed_perf_simd_tiled = "srun -n 1 --cpus-per-task 1 --partition Project perf record -e cpu-cycles:pp,cache-misses,page-faults,branch-misses -g -o ./profiling/simd_tiled.data ./build/src/simd_tiled"
+detailed_perf_simd_aligned_tiled = "srun -n 1 --cpus-per-task 1 --partition Project perf record -e cpu-cycles:pp,cache-misses,page-faults,branch-misses -g -o ./profiling/simd_aligned_tiled.data ./build/src/simd_aligned_tiled"
+detailed_perf_openmp = "srun -n 1 --cpus-per-task {ncpu} --partition Project perf record -e cpu-cycles:pp,cache-misses,page-faults,branch-misses -g -o ./profiling/openmp-{ncpu}.data ./build/src/openmp {ncpu}"
 
 def build():
     """run build command."""

@@ -1,0 +1,1276 @@
+MPI FOUND, Version: 3.1
+-- Found OpenMP_C: -fopenmp
+-- Found OpenMP_CXX: -fopenmp
+-- Found OpenMP: TRUE
+OPENMP FOUND, Version:
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /nfsmnt/116020237/CSC4005-2023Fall-private/project2/build
+[ 25%] Built target naive_old
+[ 40%] Built target simd_aligned_tiled
+[ 44%] Built target locality
+[ 44%] Built target simd
+[ 55%] Built target simd_aligned
+[ 66%] Built target naive
+[ 81%] Built target openmp
+[ 88%] Built target simd_tiled
+[100%] Built target mpi
+[95m>>>==== TESTING WITH MATS ['./matrices/matrix1.txt', './matrices/matrix2.txt'] ====<<<[0m
+[95m==== Testing naive_old ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest naive_old passed[0m
+
+[95m==== Testing naive ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest naive passed[0m
+
+[95m==== Testing locality ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest locality passed[0m
+
+[95m==== Testing simd ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest simd passed[0m
+
+[95m==== Testing simd_aligned ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest simd_aligned passed[0m
+
+[95m==== Testing simd_tiled ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest simd_tiled passed[0m
+
+[95m==== Testing simd_aligned_tiled ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest simd_aligned_tiled passed[0m
+
+[95m==== Testing openmp 1 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest openmp 1 passed[0m
+
+[95m==== Testing openmp 4 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest openmp 4 passed[0m
+
+[95m==== Testing openmp 32 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest openmp 32 passed[0m
+
+[95m==== Testing mpi 32 ====[0m
+[92mTest mpi 32 passed[0m
+
+[95m==== Testing mpi 8 ====[0m
+[92mTest mpi 8 passed[0m
+
+[95m==== Testing mpi 4 ====[0m
+[92mTest mpi 4 passed[0m
+
+[95m==== Testing mpi 1 ====[0m
+[92mTest mpi 1 passed[0m
+
+[95m>>>==== TESTING WITH MATS ['./matrices/matrix3.txt', './matrices/matrix4.txt'] ====<<<[0m
+[95m==== Testing naive_old ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 20 milliseconds
+[92mTest naive_old passed[0m
+
+[95m==== Testing naive ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 3 milliseconds
+[92mTest naive passed[0m
+
+[95m==== Testing locality ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 4 milliseconds
+[92mTest locality passed[0m
+
+[95m==== Testing simd ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest simd passed[0m
+
+[95m==== Testing simd_aligned ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest simd_aligned passed[0m
+
+[95m==== Testing simd_tiled ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest simd_tiled passed[0m
+
+[95m==== Testing simd_aligned_tiled ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest simd_aligned_tiled passed[0m
+
+[95m==== Testing openmp 1 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest openmp 1 passed[0m
+
+[95m==== Testing openmp 4 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 0 milliseconds
+[92mTest openmp 4 passed[0m
+
+[95m==== Testing openmp 32 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 24 milliseconds
+[92mTest openmp 32 passed[0m
+
+[95m==== Testing mpi 32 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 21 milliseconds
+[92mTest mpi 32 passed[0m
+
+[95m==== Testing mpi 8 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 3 milliseconds
+[92mTest mpi 8 passed[0m
+
+[95m==== Testing mpi 4 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 4 milliseconds
+[92mTest mpi 4 passed[0m
+
+[95m==== Testing mpi 1 ====[0m
+[92mTest mpi 1 passed[0m
+
+[95m>>>==== TESTING WITH MATS ['./matrices/matrix5.txt', './matrices/matrix6.txt'] ====<<<[0m
+[95m==== Testing naive_old ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 8154 milliseconds
+[92mTest naive_old passed[0m
+
+[95m==== Testing naive ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 1309 milliseconds
+[92mTest naive passed[0m
+
+[95m==== Testing locality ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 763 milliseconds
+[92mTest locality passed[0m
+
+[95m==== Testing simd ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 234 milliseconds
+[92mTest simd passed[0m
+
+[95m==== Testing simd_aligned ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 227 milliseconds
+[92mTest simd_aligned passed[0m
+
+[95m==== Testing simd_tiled ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 107 milliseconds
+[92mTest simd_tiled passed[0m
+
+[95m==== Testing simd_aligned_tiled ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 98 milliseconds
+[92mTest simd_aligned_tiled passed[0m
+
+[95m==== Testing openmp 1 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 98 milliseconds
+[92mTest openmp 1 passed[0m
+
+[95m==== Testing openmp 4 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 57 milliseconds
+[92mTest openmp 4 passed[0m
+
+[95m==== Testing openmp 32 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 34 milliseconds
+[92mTest openmp 32 passed[0m
+
+[95m==== Testing mpi 32 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 33 milliseconds
+[92mTest mpi 32 passed[0m
+
+[95m==== Testing mpi 8 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 23 milliseconds
+[92mTest mpi 8 passed[0m
+
+[95m==== Testing mpi 4 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 22 milliseconds
+[92mTest mpi 4 passed[0m
+
+[95m==== Testing mpi 1 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 26 milliseconds
+[92mTest mpi 1 passed[0m
+
+[95m>>>==== TESTING WITH MATS ['./matrices/matrix7.txt', './matrices/matrix8.txt'] ====<<<[0m
+[95m==== Testing naive_old ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 81855 milliseconds
+[92mTest naive_old passed[0m
+
+[95m==== Testing naive ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 43848 milliseconds
+[92mTest naive passed[0m
+
+[95m==== Testing locality ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 6378 milliseconds
+[92mTest locality passed[0m
+
+[95m==== Testing simd ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 2341 milliseconds
+[92mTest simd passed[0m
+
+[95m==== Testing simd_aligned ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 2204 milliseconds
+[92mTest simd_aligned passed[0m
+
+[95m==== Testing simd_tiled ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 871 milliseconds
+[92mTest simd_tiled passed[0m
+
+[95m==== Testing simd_aligned_tiled ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 804 milliseconds
+[92mTest simd_aligned_tiled passed[0m
+
+[95m==== Testing openmp 1 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 804 milliseconds
+[92mTest openmp 1 passed[0m
+
+[95m==== Testing openmp 4 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 416 milliseconds
+[92mTest openmp 4 passed[0m
+
+[95m==== Testing openmp 32 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 99 milliseconds
+[92mTest openmp 32 passed[0m
+
+[95m==== Testing mpi 32 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 97 milliseconds
+[92mTest mpi 32 passed[0m
+
+[95m==== Testing mpi 8 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 77 milliseconds
+[92mTest mpi 8 passed[0m
+
+[95m==== Testing mpi 4 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 87 milliseconds
+[92mTest mpi 4 passed[0m
+
+[95m==== Testing mpi 1 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 107 milliseconds
+[92mTest mpi 1 passed[0m
+
+[95m>>>==== Start Running Basic Perf ====<<<[0m
+[95m==== Testing naive_old ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 84782 milliseconds
+
+ Performance counter stats for './build/src/naive_old ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+   246,718,064,669      cpu-cycles:u
+       124,348,596      cache-misses:u
+            54,697      page-faults:u
+         5,903,508      branch-misses:u
+
+      86.001312018 seconds time elapsed
+
+      85.319159000 seconds user
+       0.123708000 seconds sys
+
+
+[92mTest naive_old passed[0m
+
+[95m==== Testing naive ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 44176 milliseconds
+
+ Performance counter stats for './build/src/naive ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+   129,329,723,430      cpu-cycles:u
+       126,635,990      cache-misses:u
+            51,178      page-faults:u
+         6,022,748      branch-misses:u
+
+      45.348077945 seconds time elapsed
+
+      44.786355000 seconds user
+       0.133687000 seconds sys
+
+
+[92mTest naive passed[0m
+
+[95m==== Testing locality ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 6379 milliseconds
+
+ Performance counter stats for './build/src/locality ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+    20,475,220,983      cpu-cycles:u
+       128,371,113      cache-misses:u
+            30,565      page-faults:u
+         5,894,694      branch-misses:u
+
+       7.580059657 seconds time elapsed
+
+       7.117859000 seconds user
+       0.086815000 seconds sys
+
+
+[92mTest locality passed[0m
+
+[95m==== Testing simd ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 2329 milliseconds
+
+ Performance counter stats for './build/src/simd ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     7,893,936,068      cpu-cycles:u
+       133,076,021      cache-misses:u
+            23,870      page-faults:u
+         5,771,646      branch-misses:u
+
+       3.534909788 seconds time elapsed
+
+       3.077228000 seconds user
+       0.086921000 seconds sys
+
+
+[92mTest simd passed[0m
+
+[95m==== Testing simd_aligned ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 2239 milliseconds
+
+ Performance counter stats for './build/src/simd_aligned ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     7,692,403,757      cpu-cycles:u
+       135,674,166      cache-misses:u
+            24,017      page-faults:u
+         6,088,024      branch-misses:u
+
+       3.457923969 seconds time elapsed
+
+       2.990386000 seconds user
+       0.096915000 seconds sys
+
+
+[92mTest simd_aligned passed[0m
+
+[95m==== Testing simd_tiled ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 878 milliseconds
+
+ Performance counter stats for './build/src/simd_tiled ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     3,635,928,028      cpu-cycles:u
+        10,270,209      cache-misses:u
+            12,771      page-faults:u
+         3,647,923      branch-misses:u
+
+       2.077829770 seconds time elapsed
+
+       1.629980000 seconds user
+       0.081048000 seconds sys
+
+
+[92mTest simd_tiled passed[0m
+
+[95m==== Testing simd_aligned_tiled ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 805 milliseconds
+
+ Performance counter stats for './build/src/simd_aligned_tiled ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     3,519,976,070      cpu-cycles:u
+        10,187,422      cache-misses:u
+            12,879      page-faults:u
+         3,840,133      branch-misses:u
+
+       2.011565982 seconds time elapsed
+
+       1.565833000 seconds user
+       0.079940000 seconds sys
+
+
+[92mTest simd_aligned_tiled passed[0m
+
+[95m==== Testing openmp 1 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 807 milliseconds
+
+ Performance counter stats for './build/src/openmp 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     3,523,308,151      cpu-cycles:u
+        10,936,979      cache-misses:u
+            12,930      page-faults:u
+         3,710,656      branch-misses:u
+
+       2.014485002 seconds time elapsed
+
+       1.557108000 seconds user
+       0.089718000 seconds sys
+
+
+[92mTest openmp 1 passed[0m
+
+[95m==== Testing openmp 4 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 409 milliseconds
+
+ Performance counter stats for './build/src/openmp 4 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     4,888,629,102      cpu-cycles:u
+         6,966,788      cache-misses:u
+            12,955      page-faults:u
+         3,896,623      branch-misses:u
+
+       1.623687553 seconds time elapsed
+
+       2.369800000 seconds user
+       0.102904000 seconds sys
+
+
+[92mTest openmp 4 passed[0m
+
+[95m==== Testing openmp 32 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 103 milliseconds
+
+ Performance counter stats for './build/src/openmp 32 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     6,139,845,037      cpu-cycles:u
+         4,807,393      cache-misses:u
+            13,148      page-faults:u
+         3,868,713      branch-misses:u
+
+       1.337560210 seconds time elapsed
+
+       3.242320000 seconds user
+       0.122709000 seconds sys
+
+
+[92mTest openmp 32 passed[0m
+
+[95m==== Testing mpi 32 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 103 milliseconds
+
+ Performance counter stats for './build/src/mpi 32 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,927,112,666      cpu-cycles:u
+         5,297,611      cache-misses:u
+            14,516      page-faults:u
+         3,799,159      branch-misses:u
+
+       1.360429564 seconds time elapsed
+
+       3.059923000 seconds user
+       0.140720000 seconds sys
+
+
+[92mTest mpi 32 passed[0m
+
+[95m==== Testing mpi 8 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 79 milliseconds
+
+ Performance counter stats for './build/src/mpi 8 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     4,105,160,030      cpu-cycles:u
+         2,697,139      cache-misses:u
+            14,030      page-faults:u
+         2,434,622      branch-misses:u
+
+       1.733378675 seconds time elapsed
+
+       1.670808000 seconds user
+       0.092933000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 8 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+
+     4,101,606,374      cpu-cycles:u
+ Performance counter stats for './build/src/mpi 8 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+         2,789,010      cache-misses:u
+            14,544      page-faults:u
+     4,103,893,496      cpu-cycles:u
+         2,782,699      cache-misses:u
+         2,425,699      branch-misses:u
+
+       1.356169256 seconds time elapsed
+
+       1.668766000 seconds user
+       0.091822000 seconds sys
+
+
+            14,541      page-faults:u
+         2,275,322      branch-misses:u
+
+       1.346753636 seconds time elapsed
+
+       1.664751000 seconds user
+       0.098925000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 8 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     3,042,344,984      cpu-cycles:u
+         3,417,143      cache-misses:u
+            17,162      page-faults:u
+         2,350,535      branch-misses:u
+
+       1.798994707 seconds time elapsed
+
+       1.291494000 seconds user
+       0.120094000 seconds sys
+
+
+[92mTest mpi 8 passed[0m
+
+[95m==== Testing mpi 4 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 87 milliseconds
+
+ Performance counter stats for './build/src/mpi 4 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+
+
+     3,710,035,561      cpu-cycles:u
+         2,504,341      cache-misses:u
+            14,583      page-faults:u
+ Performance counter stats for './build/src/mpi 4 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+ Performance counter stats for './build/src/mpi 4 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     3,707,420,323      cpu-cycles:u
+         2,380,832      branch-misses:u
+
+       1.354423281 seconds time elapsed
+
+       1.418380000 seconds user
+       0.093826000 seconds sys
+
+
+     3,703,045,304      cpu-cycles:u
+         2,404,806      cache-misses:u
+            14,614      page-faults:u
+         2,352,263      branch-misses:u
+
+       1.348094271 seconds time elapsed
+
+       1.424845000 seconds user
+         2,478,704      cache-misses:u
+            14,586      page-faults:u
+         2,354,470      branch-misses:u
+
+       1.341322081 seconds time elapsed
+
+       1.414587000 seconds user
+       0.096698000 seconds sys
+
+
+       0.081761000 seconds sys
+
+
+
+
+
+ Performance counter stats for './build/src/mpi 4 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+ Performance counter stats for './build/src/mpi 4 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+ Performance counter stats for './build/src/mpi 4 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     3,707,697,667      cpu-cycles:u
+
+ Performance counter stats for './build/src/mpi 4 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     3,728,871,620      cpu-cycles:u
+         2,630,076      cache-misses:u
+     3,706,907,123      cpu-cycles:u
+         2,616,671      cache-misses:u
+            14,045      page-faults:u
+         2,622,646      cache-misses:u
+            14,098      page-faults:u
+         2,437,887      branch-misses:u
+
+       1.865121815 seconds time elapsed
+
+       1.424762000 seconds user
+       0.089733000 seconds sys
+
+
+     3,709,298,721      cpu-cycles:u
+         2,615,398      cache-misses:u
+            14,597      page-faults:u
+         2,316,037      branch-misses:u
+            14,569      page-faults:u
+         7,298,010      branch-misses:u
+
+       2.029778073 seconds time elapsed
+
+       1.409329000 seconds user
+       0.106722000 seconds sys
+
+
+         7,179,591      branch-misses:u
+
+       1.853941340 seconds time elapsed
+
+       1.405151000 seconds user
+       0.107705000 seconds sys
+
+
+
+       1.818066255 seconds time elapsed
+
+       1.411101000 seconds user
+       0.100721000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 4 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     2,650,399,413      cpu-cycles:u
+         3,373,474      cache-misses:u
+            18,656      page-faults:u
+         1,983,422      branch-misses:u
+
+       1.897971731 seconds time elapsed
+
+       1.056650000 seconds user
+       0.109963000 seconds sys
+
+
+[92mTest mpi 4 passed[0m
+
+[95m==== Testing mpi 1 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 101 milliseconds
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,448,295,931      cpu-cycles:u
+         1,666,285      cache-misses:u
+            18,293      page-faults:u
+         2,733,198      branch-misses:u
+
+       2.122555667 seconds time elapsed
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,451,345,656      cpu-cycles:u
+       1.931499000 seconds user
+       0.119782000 seconds sys
+
+
+         1,670,693      cache-misses:u
+            18,308      page-faults:u
+         3,794,334      branch-misses:u
+
+       2.300158019 seconds time elapsed
+
+       1.942801000 seconds user
+       0.106824000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,443,076,171      cpu-cycles:u
+         1,671,725      cache-misses:u
+            18,314      page-faults:u
+         2,722,262      branch-misses:u
+
+       2.176595906 seconds time elapsed
+
+       1.939061000 seconds user
+       0.109720000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,448,707,882      cpu-cycles:u
+         1,667,967      cache-misses:u
+            18,297      page-faults:u
+         3,803,551      branch-misses:u
+
+       2.174701383 seconds time elapsed
+
+       1.947074000 seconds user
+       0.104788000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,447,205,560      cpu-cycles:u
+         1,677,880      cache-misses:u
+            18,314      page-faults:u
+         3,795,303      branch-misses:u
+
+       2.566419288 seconds time elapsed
+
+       1.940951000 seconds user
+       0.109771000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,445,998,355      cpu-cycles:u
+         1,653,453      cache-misses:u
+            18,830      page-faults:u
+         2,615,638      branch-misses:u
+
+       2.195640057 seconds time elapsed
+
+       1.927509000 seconds user
+       0.122714000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,443,239,353      cpu-cycles:u
+         1,659,041      cache-misses:u
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,444,090,365      cpu-cycles:u
+         1,677,591      cache-misses:u
+            18,320      page-faults:u
+         3,813,731      branch-misses:u
+
+       2.204378497 seconds time elapsed
+
+       1.934241000 seconds user
+       0.119767000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,447,457,530      cpu-cycles:u
+         1,662,954      cache-misses:u
+            18,825      page-faults:u
+         3,799,391      branch-misses:u
+
+       2.218933088 seconds time elapsed
+
+       1.935267000 seconds user
+       0.118709000 seconds sys
+
+
+            19,061      page-faults:u
+         2,726,013      branch-misses:u
+
+       2.244153274 seconds time elapsed
+
+       1.926078000 seconds user
+       0.125678000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,404,515,793      cpu-cycles:u
+         1,658,960      cache-misses:u
+            18,808      page-faults:u
+         3,325,445      branch-misses:u
+
+       2.115777676 seconds time elapsed
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,432,604,650      cpu-cycles:u
+         1,653,613      cache-misses:u
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,442,429,805      cpu-cycles:u
+         1,650,812      cache-misses:u
+            18,830      page-faults:u
+         3,798,703      branch-misses:u
+
+       2.229261238 seconds time elapsed
+
+       1.957244000 seconds user
+       0.097762000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,446,750,428      cpu-cycles:u
+         1,655,084      cache-misses:u
+            18,828      page-faults:u
+         3,837,050      branch-misses:u
+
+       2.365368123 seconds time elapsed
+
+       1.947028000 seconds user
+       0.107724000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,448,051,393      cpu-cycles:u
+         1,656,144      cache-misses:u
+            18,818      page-faults:u
+         3,800,194      branch-misses:u
+
+       2.294195105 seconds time elapsed
+
+       1.932219000 seconds user
+       0.121761000 seconds sys
+
+
+       1.937684000 seconds user
+       0.107704000 seconds sys
+
+
+            18,827      page-faults:u
+         3,803,491      branch-misses:u
+
+       2.228559758 seconds time elapsed
+
+       1.931888000 seconds user
+       0.122802000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,444,227,636      cpu-cycles:u
+         1,675,055      cache-misses:u
+            18,827      page-faults:u
+         3,793,522      branch-misses:u
+
+       2.747083507 seconds time elapsed
+
+       1.938185000 seconds user
+       0.117768000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,464,617,970      cpu-cycles:u
+         1,682,972      cache-misses:u
+            18,308      page-faults:u
+         3,829,883      branch-misses:u
+
+       2.094005443 seconds time elapsed
+
+       1.941414000 seconds user
+       0.113789000 seconds sys
+
+
+     5,465,542,159      cpu-cycles:u
+         1,683,275      cache-misses:u
+            18,315      page-faults:u
+         3,792,020      branch-misses:u
+
+       2.085609723 seconds time elapsed
+
+       1.950671000 seconds user
+       0.103822000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     4,393,826,047      cpu-cycles:u
+         2,611,098      cache-misses:u
+            23,515      page-faults:u
+         1,722,915      branch-misses:u
+
+       2.123155188 seconds time elapsed
+
+       1.562687000 seconds user
+       0.137972000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,464,955,792      cpu-cycles:u
+         1,667,904      cache-misses:u
+            18,300      page-faults:u
+         2,749,933      branch-misses:u
+
+       2.080841404 seconds time elapsed
+
+       1.937804000 seconds user
+       0.116867000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,451,148,153      cpu-cycles:u
+         1,662,238      cache-misses:u
+            18,800      page-faults:u
+         3,788,802      branch-misses:u
+
+       2.085701213 seconds time elapsed
+
+       1.940702000 seconds user
+       0.112692000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,467,399,540      cpu-cycles:u
+         1,665,331      cache-misses:u
+            18,815      page-faults:u
+         3,795,774      branch-misses:u
+
+       2.082680667 seconds time elapsed
+
+       1.956321000 seconds user
+       0.099761000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,469,553,123      cpu-cycles:u
+         1,668,001      cache-misses:u
+     5,464,712,292      cpu-cycles:u
+         1,664,519      cache-misses:u
+            18,804      page-faults:u
+         3,812,813      branch-misses:u
+
+       2.083187123 seconds time elapsed
+
+       1.936720000 seconds user
+       0.119797000 seconds sys
+
+
+            18,813      page-faults:u
+         3,801,937      branch-misses:u
+
+       2.085187249 seconds time elapsed
+
+       1.949924000 seconds user
+       0.106886000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,464,486,562      cpu-cycles:u
+         1,680,354      cache-misses:u
+            18,812      page-faults:u
+         3,808,403      branch-misses:u
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,445,643,048      cpu-cycles:u
+         1,661,091      cache-misses:u
+            18,820      page-faults:u
+         3,796,671      branch-misses:u
+
+       2.093092198 seconds time elapsed
+
+       1.935235000 seconds user
+       0.119767000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,448,349,028      cpu-cycles:u
+         1,656,838      cache-misses:u
+            18,817      page-faults:u
+         3,788,351      branch-misses:u
+
+       2.091306593 seconds time elapsed
+
+       1.945808000 seconds user
+       0.108821000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,451,091,635      cpu-cycles:u
+         1,664,577      cache-misses:u
+            19,049      page-faults:u
+         2,698,611      branch-misses:u
+
+       2.086412143 seconds time elapsed
+
+       1.937288000 seconds user
+       0.117774000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,448,881,986      cpu-cycles:u
+         1,665,810      cache-misses:u
+            19,048      page-faults:u
+         2,712,895      branch-misses:u
+
+       2.086559803 seconds time elapsed
+
+       1.944482000 seconds user
+       0.109688000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,451,984,652      cpu-cycles:u
+         1,665,518      cache-misses:u
+            19,051      page-faults:u
+         2,521,889      branch-misses:u
+
+       2.098985365 seconds time elapsed
+
+       1.938162000 seconds user
+       0.116768000 seconds sys
+
+
+     5,465,382,203      cpu-cycles:u
+         1,665,732      cache-misses:u
+            18,776      page-faults:u
+         2,768,078      branch-misses:u
+
+       2.082558680 seconds time elapsed
+
+       1.948343000 seconds user
+       0.108740000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,468,983,132      cpu-cycles:u
+         1,662,795      cache-misses:u
+            18,815      page-faults:u
+         3,806,145      branch-misses:u
+
+       2.084812801 seconds time elapsed
+
+       1.942424000 seconds user
+       0.114788000 seconds sys
+
+
+       2.144425835 seconds time elapsed
+
+       1.936275000 seconds user
+       0.121640000 seconds sys
+
+
+
+ Performance counter stats for './build/src/mpi 1 ./matrices/matrix7.txt ./matrices/matrix8.txt ./build/result.txt':
+
+     5,463,103,028      cpu-cycles:u
+         1,665,583      cache-misses:u
+            18,820      page-faults:u
+         3,806,247      branch-misses:u
+
+       2.086677060 seconds time elapsed
+
+       1.936805000 seconds user
+       0.120738000 seconds sys
+
+
+[92mTest mpi 1 passed[0m
+
+[95m==== Testing naive_old ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 81856 milliseconds
+[ perf record: Woken up 288 times to write data ]
+[ perf record: Captured and wrote 71.938 MB ./profiling/naive_old.data (819988 samples) ]
+[92mTest naive_old passed[0m
+
+[95m==== Testing naive ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 47083 milliseconds
+[ perf record: Woken up 171 times to write data ]
+[ perf record: Captured and wrote 42.678 MB ./profiling/naive.data (543237 samples) ]
+[92mTest naive passed[0m
+
+[95m==== Testing locality ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 6925 milliseconds
+[ perf record: Woken up 34 times to write data ]
+[ perf record: Captured and wrote 8.404 MB ./profiling/locality.data (90333 samples) ]
+[92mTest locality passed[0m
+
+[95m==== Testing simd ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 2524 milliseconds
+[ perf record: Woken up 16 times to write data ]
+[ perf record: Captured and wrote 3.988 MB ./profiling/simd.data (39535 samples) ]
+[92mTest simd passed[0m
+
+[95m==== Testing simd_aligned ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 2413 milliseconds
+[ perf record: Woken up 16 times to write data ]
+[ perf record: Captured and wrote 3.877 MB ./profiling/simd_aligned.data (38356 samples) ]
+[92mTest simd_aligned passed[0m
+
+[95m==== Testing simd_tiled ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 974 milliseconds
+[ perf record: Woken up 9 times to write data ]
+[ perf record: Captured and wrote 2.105 MB ./profiling/simd_tiled.data (20885 samples) ]
+[92mTest simd_tiled passed[0m
+
+[95m==== Testing simd_aligned_tiled ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 888 milliseconds
+[ perf record: Woken up 8 times to write data ]
+[ perf record: Captured and wrote 2.002 MB ./profiling/simd_aligned_tiled.data (19915 samples) ]
+[92mTest simd_aligned_tiled passed[0m
+
+[95m==== Testing openmp 1 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 893 milliseconds
+[ perf record: Woken up 10 times to write data ]
+[ perf record: Captured and wrote 2.297 MB ./profiling/openmp-1.data (19826 samples) ]
+[92mTest openmp 1 passed[0m
+
+[95m==== Testing openmp 4 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 458 milliseconds
+[ perf record: Woken up 13 times to write data ]
+[ perf record: Captured and wrote 3.192 MB ./profiling/openmp-4.data (29428 samples) ]
+[92mTest openmp 4 passed[0m
+
+[95m==== Testing openmp 32 ====[0m
+Output file to: ./build/result.txt
+Multiplication Complete!
+Execution Time: 103 milliseconds
+[ perf record: Woken up 4 times to write data ]
+[ perf record: Captured and wrote 3.211 MB ./profiling/openmp-32.data (30739 samples) ]
+[92mTest openmp 32 passed[0m
