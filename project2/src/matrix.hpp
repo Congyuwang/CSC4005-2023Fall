@@ -32,6 +32,10 @@ class Matrix {
       return data[rowIndex];
     }
 
+    // raw pointer
+    inline int** raw() { return data; }
+    inline int** raw() const { return data; }
+
     // Function to display the matrix
     void display() const;
 

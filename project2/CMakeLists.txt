@@ -21,3 +21,4 @@ if (CMAKE_C_COMPILER_VERSION VERSION_LESS 4.8.5 OR CMAKE_CXX_COMPILER_VERSION
 endif ()
 
 add_subdirectory(src)
+add_subdirectory(src/gpu)

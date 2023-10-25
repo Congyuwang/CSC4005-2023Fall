@@ -77,3 +77,7 @@ echo ""
 echo "Number of Processes: 32, Number of Threads: 1"
 srun -n 32 --cpus-per-task 1 --partition Project --mpi=pmi2 ${CURRENT_DIR}/../build/src/mpi 1 ${CURRENT_DIR}/../matrices/matrix5.txt ${CURRENT_DIR}/../matrices/matrix6.txt ${CURRENT_DIR}/../build/result.txt
 echo ""
+
+echo "OpenACC"
+srun -n 1 --cpus-per-task 1 --partition Project ${CURRENT_DIR}/../build/src/gpu/openacc ${CURRENT_DIR}/../matrices/matrix5.txt ${CURRENT_DIR}/../matrices/matrix6.txt ${CURRENT_DIR}/../build/result.txt
+echo ""
