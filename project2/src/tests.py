@@ -30,6 +30,7 @@ simd_aligned_tiled = "srun -n 1 --cpus-per-task 1 --partition Project ./build/sr
 openmp = "srun -n 1 --cpus-per-task {ncpu} --partition Project ./build/src/openmp {ncpu}"
 mpi = "srun -n {nproc} --cpus-per-task {ncpu} --partition Project --mpi=pmi2 ./build/src/mpi {ncpu}"
 openacc = "srun -n 1 --cpus-per-task 1 --partition Project ./build/src/gpu/openacc"
+cuda = "srun -n 1 --cpus-per-task 1 --partition Project ./build/src/gpu/cuda"
 
 def build():
     """run build command."""
@@ -82,6 +83,7 @@ def tests_with_data(ref_result, mats):
     run_test(mpi.format(nproc=8, ncpu=4), ref_result, mats)
     run_test(mpi.format(nproc=32, ncpu=1), ref_result, mats)
     run_test(openacc, ref_result, mats)
+    run_test(cuda, ref_result, mats)
 
 
 if __name__ == "__main__":

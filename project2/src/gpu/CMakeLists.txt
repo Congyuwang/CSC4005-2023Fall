@@ -15,9 +15,11 @@ endif ()
 SET(CMAKE_CXX_COMPILER pgc++)
 
 ## CUDA
-cuda_add_executable(cuda cuda.cu)
+cuda_add_executable(cuda cuda.cu ../matrix_cuda.hpp ../matrix_cuda.cpp)
 target_link_libraries(cuda cudart)
+target_compile_options(cuda PRIVATE -O2)
 
 ## OpenACC
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -acc")
 add_executable(openacc openacc.cpp ../matrix.hpp ../matrix.cpp)
+target_compile_options(openacc PRIVATE -O2)
