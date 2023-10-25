@@ -81,3 +81,13 @@ echo ""
 echo "OpenACC"
 srun -n 1 --cpus-per-task 1 --partition Project ${CURRENT_DIR}/../build/src/gpu/openacc ${CURRENT_DIR}/../matrices/matrix5.txt ${CURRENT_DIR}/../matrices/matrix6.txt ${CURRENT_DIR}/../build/result.txt
 echo ""
+
+# OpenACC
+echo "OpenACC"
+srun -n 1 --cpus-per-task 1 --partition Project ${CURRENT_DIR}/../build/src/gpu/openacc ${CURRENT_DIR}/../matrices/matrix5.txt ${CURRENT_DIR}/../matrices/matrix6.txt ${CURRENT_DIR}/../build/result.txt
+echo ""
+
+# CUDA
+echo "CUDA"
+srun -n 1 --cpus-per-task 1 --partition Project ${CURRENT_DIR}/../build/src/gpu/cuda ${CURRENT_DIR}/../matrices/matrix5.txt ${CURRENT_DIR}/../matrices/matrix6.txt ${CURRENT_DIR}/../build/result.txt
+echo ""

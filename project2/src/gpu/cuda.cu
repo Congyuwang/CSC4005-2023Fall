@@ -3,11 +3,16 @@
 #include <iostream>
 
 #define TILE 8
+#define WARMUP 10
+#define TEST_ROUND 50
 
 #define CUDA_ERR(val) check((val), #val, __FILE__, __LINE__)
 
 void
-check(cudaError_t err, const char* const func, const char* const file, int const line)
+check(cudaError_t err,
+      const char* const func,
+      const char* const file,
+      int const line)
 {
   if (err != cudaSuccess) {
     std::cerr << "CUDA Runtime Error at: " << file << ":" << line << std::endl;
@@ -105,8 +110,18 @@ matrix_multiply(const Matrix& matrix1, const Matrix& matrix2)
   CUDA_ERR(cudaEventCreate(&start));
   CUDA_ERR(cudaEventCreate(&stop));
 
+  for (int i = 0; i < WARMUP; i++) {
+    mat_mul<<<BLOCKS_PER_GRID, THREADS_PER_BLOCK>>>(
+      mat1, mat2, matr, MT, KT, NT);
+  }
+
   CUDA_ERR(cudaEventRecord(start, 0)); // GPU start time
-  mat_mul<<<BLOCKS_PER_GRID, THREADS_PER_BLOCK>>>(mat1, mat2, matr, MT, KT, NT);
+
+  for (int i = 0; i < TEST_ROUND; i++) {
+    mat_mul<<<BLOCKS_PER_GRID, THREADS_PER_BLOCK>>>(
+      mat1, mat2, matr, MT, KT, NT);
+  }
+
   CUDA_ERR(cudaEventRecord(stop, 0)); // GPU end time
 
   // Print time of the GPU computation
@@ -116,9 +131,13 @@ matrix_multiply(const Matrix& matrix1, const Matrix& matrix2)
   CUDA_ERR(cudaMemcpy(
     result.raw(), matr, MR_SIZE * sizeof(int), cudaMemcpyDeviceToHost));
 
+  CUDA_ERR(cudaFree(mat1));
+  CUDA_ERR(cudaFree(mat2));
+  CUDA_ERR(cudaFree(matr));
+
   std::cout << "Multiplication Complete!" << std::endl;
-  std::cout << "GPU Execution Time: " << gpuDuration << " milliseconds"
-            << std::endl;
+  std::cout << "GPU Execution Time: " << gpuDuration / TEST_ROUND
+            << " milliseconds" << std::endl;
 
   return result;
 }
